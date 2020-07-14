@@ -36,4 +36,37 @@ function DisplayList(names, wrapper, rowsPerPage, page) {
   }
 }
 
+function SetupPagination(names, wrapper, rowsPerPage) {
+  wrapper.innerHTML = "";
+
+  let pageCount = Math.ceil(names.length / rowsPerPage); // Rounds up
+
+  for (let i = 1; i < pageCount + 1; i++) {
+    let btn = PaginationButton(i, names);
+    wrapper.appendChild(btn);
+  }
+}
+
+function PaginationButton(page, names) {
+  let button = document.createElement("button");
+  button.textContent = page;
+
+  if (currentPage == page) {
+    button.classList.add("active");
+  }
+
+  button.addEventListener("click", function () {
+    currentPage = page;
+    DisplayList(names, ul, rows, currentPage);
+
+    let currentBtn = document.querySelector(".btn-wrapper .active");
+    currentBtn.classList.remove("active");
+
+    button.classList.add("active");
+  });
+
+  return button;
+}
+
 DisplayList(listNames, ul, rows, currentPage);
+SetupPagination(listNames, btnWrapper, rows);

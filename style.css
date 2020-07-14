@@ -33,3 +33,16 @@
   background-color: white;
   margin: 5px 0;
 }
+
+.btn_wrapper {
+  padding: 10px 20px;
+}
+
+.btn_wrapper button {
+  padding: 5px 10px;
+  margin-right: 5px;
+}
+
+button.active {
+  background-color: orange;
+}
